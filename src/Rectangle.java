@@ -54,31 +54,13 @@ public class Rectangle {
         int testX2 = test.getX1()+test.getLength();
         int testY2 = test.getY1()-test.getWidth();
         // (x1,y1) (x2,y1) (x2,y2) (x1,y2)
-        if (originalX1 <= testX2 && testX2 <= originalX2 && originalY1 >= testY2 && testY1 >= originalY2 ){
+        if (originalX1 <= testX2 && originalX2 >= testX1 && originalY1 >= testY2 && originalY2 <= testY1) {
             count++;
-        }
-        else if (originalX1 <= testX2 && testX2 <= originalX2 && originalY1 <= testY1 && testY2 <= originalY2 ){
-            count++;
-        }
-        else if (originalX1 >= testX1 && testX2 >= originalX2 && originalY1 >= testY1 && testY1 >= originalY2 ){
-            count++;
-        }
-        else if (originalX1 <= testX2 && testX2 <= originalX2 && originalY1 >= testY1 && testY2 <= originalY2 ){
-            count++;
-        }
-        else if ((og.getX1() <= test.getX1()) && (test.getX1() <= (og.getX1()+og.getLength())) && ((og.getY1() - og.getWidth()) <= test.getY1()) && (og.getY1() >= test.getY1())){
-            count++;
-        }
-        /* else if ((test.getX1() + test.getLength() <= og.getX1() + og.getLength()) && og.getX1() ) {
-        } */
-        for (int i = test.getX1(); i < test.getX1()+test.getLength();i++){
-            for (int j = test.getY1(); j < test.getY1() + test.getWidth(); j++) {
-
-            }
         }
     }
 
     public double percent() {
-        return (double)(count)/1000000 * 100;
+        double percent = (double)(count)/1000000 * 100;
+        return Math.round(percent * 10.0) / 10.0;
     }
 }
